@@ -759,9 +759,366 @@
      "derivar"
     ]
    ]
+  },
+  "faq_precio": {
+   "t": "Los *precios, el stock y los plazos* los confirma un ejecutivo, porque dependen del modelo, la cantidad y si es compra o arriendo. Si me cuentas qué necesitas, primero te oriento y luego un ejecutivo te envía la cotización.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de precio o disponibilidad"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_garantia": {
+   "t": "Muchas destructoras HSM tienen *cilindro de corte con garantía de por vida*, y varios modelos hasta 3 años de cobertura total (las condiciones dependen del modelo: se confirman en la ficha técnica o con un ejecutivo). Además contamos con servicio técnico propio y repuestos.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de garantía"
+     }
+    ],
+    [
+     "Servicio técnico",
+     "serv_tipo",
+     {
+      "motivo": "Servicio técnico o repuestos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_despacho": {
+   "t": "El despacho o retiro se coordina con un ejecutivo según tu ciudad y el equipo. Los plazos y costos de envío los confirma él al enviarte la cotización.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de despacho"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_pago": {
+   "t": "Atendemos a empresas, instituciones y personas. La facturación, las formas de pago y las condiciones comerciales las coordina el ejecutivo junto con la cotización.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de pago o facturación"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_din": {
+   "t": "La norma *DIN 66399* clasifica la seguridad de la destrucción de P-1 (básica) a P-7 (máxima). Para datos personales, financieros o médicos se recomienda *P-4 o superior*. Es una orientación general: el nivel de cada modelo está en su ficha técnica.\n\nGuía y tabla: {SITIO}ley-21719-estas-preparado/",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Ley 21.719",
+     "ley_intro",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_licitacion": {
+   "t": "Para licitaciones, convenios o compras institucionales, un ejecutivo revisa tu caso (bases, plazos y documentación). Déjame tus datos y te contacta.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Licitación o compra institucional"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_distribuidor": {
+   "t": "Si quieres distribuir o revender HSM, un ejecutivo comercial te contacta para conversar las condiciones. Déjame tus datos.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Distribuidor o revendedor"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_reclamo": {
+   "t": "Lamento el inconveniente. Para atenderlo bien, te conecto con un ejecutivo que lo revisará contigo.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Reclamo o problema con un producto"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_instalacion": {
+   "t": "En el *arriendo* dejamos el equipo operativo y capacitamos a tu equipo. Para una compra, un ejecutivo coordina la entrega y la puesta en marcha según el modelo.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de instalación o capacitación"
+     }
+    ],
+    [
+     "Arriendo de equipos",
+     "arr_equipo",
+     {
+      "motivo": "Arriendo de equipos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_visita": {
+   "t": "Coordinamos *visitas en terreno* para entender tu necesidad y recomendarte el equipo, por ejemplo en proyectos de arriendo. El ejecutivo agenda según tu comuna.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Solicitud de visita en terreno"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_quien": {
+   "t": "*HSM* es una marca alemana fundada en 1971, especializada en destrucción de documentos, prensas y reciclaje. En Chile la opera *Imex Estado Ltda.* desde San Bernardo, con servicio técnico propio.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
   }
  },
  "intenciones": [
+  {
+   "p": [
+    "precio",
+    "precios",
+    "cuanto cuesta",
+    "cuánto cuesta",
+    "cuanto vale",
+    "cuánto vale",
+    "valor",
+    "descuento",
+    "oferta",
+    "stock",
+    "disponibilidad",
+    "plazo de entrega",
+    "cuanto demora",
+    "cuánto demora"
+   ],
+   "va": "faq_precio",
+   "set": {}
+  },
+  {
+   "p": [
+    "garantía",
+    "garantia",
+    "cuanto dura",
+    "cuánto dura"
+   ],
+   "va": "faq_garantia",
+   "set": {}
+  },
+  {
+   "p": [
+    "despacho",
+    "envío",
+    "envio",
+    "envios",
+    "envían",
+    "envian",
+    "regiones",
+    "retiro",
+    "retirar",
+    "entrega"
+   ],
+   "va": "faq_despacho",
+   "set": {}
+  },
+  {
+   "p": [
+    "factura",
+    "boleta",
+    "pago",
+    "pagar",
+    "transferencia",
+    "crédito",
+    "credito",
+    "orden de compra",
+    "tarjeta"
+   ],
+   "va": "faq_pago",
+   "set": {}
+  },
+  {
+   "p": [
+    "din",
+    "p-4",
+    "p4",
+    "p-5",
+    "p-2",
+    "p-3",
+    "p-6",
+    "p-7",
+    "nivel de seguridad",
+    "niveles de seguridad",
+    "partículas",
+    "particulas",
+    "tiras"
+   ],
+   "va": "faq_din",
+   "set": {}
+  },
+  {
+   "p": [
+    "licitación",
+    "licitacion",
+    "mercado público",
+    "mercado publico",
+    "convenio",
+    "municipalidad",
+    "institución",
+    "institucion"
+   ],
+   "va": "faq_licitacion",
+   "set": {}
+  },
+  {
+   "p": [
+    "distribuidor",
+    "distribuir",
+    "revender",
+    "revendedor",
+    "mayorista"
+   ],
+   "va": "faq_distribuidor",
+   "set": {}
+  },
+  {
+   "p": [
+    "reclamo",
+    "reclamos",
+    "no funciona",
+    "defectuosa",
+    "defectuoso",
+    "devolución",
+    "devolucion",
+    "mala atención",
+    "mala atencion"
+   ],
+   "va": "faq_reclamo",
+   "set": {}
+  },
+  {
+   "p": [
+    "instalación",
+    "instalacion",
+    "capacitación",
+    "capacitacion",
+    "manual",
+    "instructivo"
+   ],
+   "va": "faq_instalacion",
+   "set": {}
+  },
+  {
+   "p": [
+    "visita",
+    "visitan",
+    "terreno",
+    "demostración",
+    "demostracion"
+   ],
+   "va": "faq_visita",
+   "set": {}
+  },
+  {
+   "p": [
+    "quiénes son",
+    "quienes son",
+    "quién es hsm",
+    "quien es hsm",
+    "quienes somos",
+    "alemana"
+   ],
+   "va": "faq_quien",
+   "set": {}
+  },
   {
    "p": [
     "arriendo",
@@ -789,9 +1146,7 @@
     "mantencion",
     "aceite",
     "cinta",
-    "alambre",
-    "garantía",
-    "garantia"
+    "alambre"
    ],
    "va": "serv_tipo",
    "set": {
@@ -885,9 +1240,6 @@
     "cotizar",
     "cotización",
     "cotizacion",
-    "valor",
-    "cuánto cuesta",
-    "cuanto cuesta",
     "comprar"
    ],
    "va": "inicio",

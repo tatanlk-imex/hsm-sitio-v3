@@ -1,0 +1,1285 @@
+{
+ "version": 1,
+ "nombre": "Asistente HSM Chile",
+ "horario_txt": "Lunes a jueves de 8:30 a 16:30 y viernes de 8:30 a 15:00",
+ "horario": {
+  "1": [
+   "08:30",
+   "16:30"
+  ],
+  "2": [
+   "08:30",
+   "16:30"
+  ],
+  "3": [
+   "08:30",
+   "16:30"
+  ],
+  "4": [
+   "08:30",
+   "16:30"
+  ],
+  "5": [
+   "08:30",
+   "15:00"
+  ]
+ },
+ "vigencia_ley": "2026-12-01",
+ "inicio": "inicio",
+ "nodos": {
+  "inicio": {
+   "t": "¡Hola! Soy el asistente de *HSM Chile* 👋 Vendemos destructoras de papel, prensas y recicladoras alemanas (operamos con Imex Estado Ltda.).\n\nTe oriento en pocos pasos y, cuando quieras, te conecto con un ejecutivo. ¿Qué necesitas?",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Destruir discos duros",
+     "disco_tipo",
+     {
+      "motivo": "Destrucción de discos duros"
+     }
+    ],
+    [
+     "Prensas y reciclaje",
+     "prensa_mat",
+     {
+      "motivo": "Prensas o recicladora de cartón"
+     }
+    ],
+    [
+     "Arriendo de equipos",
+     "arr_equipo",
+     {
+      "motivo": "Arriendo de equipos"
+     }
+    ],
+    [
+     "Ley 21.719",
+     "ley_intro",
+     {
+      "motivo": "Consulta Ley 21.719"
+     }
+    ],
+    [
+     "Servicio técnico",
+     "serv_tipo",
+     {
+      "motivo": "Servicio técnico o repuestos"
+     }
+    ],
+    [
+     "Horario y dirección",
+     "info",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta general"
+     }
+    ]
+   ]
+  },
+  "dest_vol": {
+   "t": "Perfecto. Para recomendarte la destructora justa: ¿cuántas hojas destruyen al día, más o menos?",
+   "op": [
+    [
+     "Hasta 100 (hogar)",
+     "dest_info",
+     {
+      "vol": "hasta 100 hojas al día",
+      "linea": "Compact o HomeOffice",
+      "url": "{SITIO}categoria-producto/linea-compact/"
+     }
+    ],
+    [
+     "100 a 500 (oficina)",
+     "dest_info",
+     {
+      "vol": "entre 100 y 500 hojas al día",
+      "linea": "OfficePro",
+      "url": "{SITIO}categoria-producto/linea-officepro/"
+     }
+    ],
+    [
+     "500 a 2.000 (área)",
+     "dest_info",
+     {
+      "vol": "entre 500 y 2.000 hojas al día",
+      "linea": "Departamental",
+      "url": "{SITIO}categoria-producto/linea-departamental/"
+     }
+    ],
+    [
+     "Más de 2.000",
+     "dest_info",
+     {
+      "vol": "más de 2.000 hojas al día",
+      "linea": "Industrial Powerline",
+      "url": "{SITIO}categoria-producto/linea-industrial-powerline/"
+     }
+    ],
+    [
+     "No lo sé",
+     "dest_info",
+     {
+      "vol": "un volumen que aún no conoces",
+      "linea": "OfficePro (el punto de partida más común)",
+      "url": "{SITIO}productos/"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "dest_info": {
+   "t": "¿Qué tipo de información vas a destruir?",
+   "op": [
+    [
+     "Documentos generales",
+     "dest_reco",
+     {
+      "nivel": "corte en tiras o partículas (niveles P-2 a P-3 de la norma DIN 66399)"
+     }
+    ],
+    [
+     "Datos personales",
+     "dest_reco",
+     {
+      "nivel": "corte en partículas nivel P-4 o superior (lo recomendable para datos personales, clientes o pacientes según la Ley 21.719)"
+     }
+    ],
+    [
+     "Muy confidencial",
+     "dest_reco",
+     {
+      "nivel": "corte en partículas nivel P-5 o superior (alta confidencialidad)"
+     }
+    ]
+   ]
+  },
+  "dest_reco": {
+   "t": "Por lo que me cuentas (*{vol}*), te conviene mirar la línea *{linea}* con {nivel}.\n\nVer equipos: {url}\n\nUn ejecutivo te confirma el modelo exacto, el precio y la disponibilidad. ¿Qué hacemos?",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Cambiar respuestas",
+     "dest_vol",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "disco_tipo": {
+   "t": "Para dar de baja discos duros de forma segura, ¿qué necesitas destruir?",
+   "op": [
+    [
+     "Discos duros (HDD)",
+     "disco_cant",
+     {
+      "soporte": "discos duros HDD"
+     }
+    ],
+    [
+     "Discos SSD",
+     "disco_cant",
+     {
+      "soporte": "discos SSD"
+     }
+    ],
+    [
+     "Otros soportes",
+     "disco_cant",
+     {
+      "soporte": "cintas, CD/DVD u otros soportes"
+     }
+    ]
+   ]
+  },
+  "disco_cant": {
+   "t": "¿Cuántas unidades, aproximadamente?",
+   "op": [
+    [
+     "Menos de 20",
+     "disco_reco",
+     {
+      "cant": "menos de 20 unidades"
+     }
+    ],
+    [
+     "Entre 20 y 100",
+     "disco_reco",
+     {
+      "cant": "entre 20 y 100 unidades"
+     }
+    ],
+    [
+     "Más de 100",
+     "disco_reco",
+     {
+      "cant": "más de 100 unidades"
+     }
+    ]
+   ]
+  },
+  "disco_reco": {
+   "t": "Para {soporte} ({cant}) hay destructoras específicas de la línea industrial. Destruir internamente evita que los equipos en desuso, que guardan datos de clientes y trabajadores, salgan de tu empresa (algo clave con la Ley 21.719).\n\nVer equipos: {SITIO}categoria-producto/destructora-disco-duro/\n\nUn ejecutivo te indica el modelo según el tipo y la cantidad.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Arrendar en vez",
+     "arr_equipo",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "prensa_mat": {
+   "t": "¿Qué material quieres compactar o reciclar?",
+   "op": [
+    [
+     "Cartón",
+     "prensa_vol",
+     {
+      "material": "cartón"
+     }
+    ],
+    [
+     "Plástico PET",
+     "reco_pet",
+     {
+      "material": "plástico PET"
+     }
+    ],
+    [
+     "Film plástico",
+     "prensa_vol",
+     {
+      "material": "film plástico"
+     }
+    ],
+    [
+     "Latas u otros",
+     "prensa_vol",
+     {
+      "material": "latas u otros materiales"
+     }
+    ],
+    [
+     "Recicladora ProfiPack",
+     "reco_profi",
+     {
+      "material": "cartón para embalaje"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "prensa_vol": {
+   "t": "¿Cuánto material generan?",
+   "op": [
+    [
+     "Poco (bajo volumen)",
+     "reco_prensa",
+     {
+      "cant": "bajo volumen",
+      "prensa": "prensas verticales V-Press",
+      "url": "{SITIO}categoria-producto/linea-prensas-verticales-vpress/"
+     }
+    ],
+    [
+     "Medio",
+     "reco_prensa",
+     {
+      "cant": "volumen medio",
+      "prensa": "prensas horizontales semiautomáticas (línea VK)",
+      "url": "{SITIO}categoria-producto/linea-prensas-horizontales-vk/"
+     }
+    ],
+    [
+     "Alto (industrial)",
+     "reco_prensa",
+     {
+      "cant": "alto volumen",
+      "prensa": "prensas horizontales automáticas (línea HL)",
+      "url": "{SITIO}categoria-producto/linea-prensas-horizontales-hl/"
+     }
+    ]
+   ]
+  },
+  "reco_prensa": {
+   "t": "Para compactar *{material}* con {cant}, te conviene mirar las *{prensa}*.\n\nVer equipos: {url}\n\nUn ejecutivo calcula el modelo según tu volumen y espacio.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Cambiar respuestas",
+     "prensa_mat",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "reco_pet": {
+   "t": "Para *plástico PET* tenemos perforadoras y compactadoras (línea PET Crusher) que reducen el volumen de botellas y envases.\n\nVer equipos: {SITIO}categoria-producto/perforadoras-de-pet/\n\nUn ejecutivo te recomienda el modelo.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "reco_profi": {
+   "t": "La *recicladora de cartón ProfiPack* convierte el cartón que desechas en material de relleno y amortiguación para tus envíos: reduces residuos y gastos de embalaje.\n\nVer equipos: {SITIO}categoria-producto/recicladora-de-carton/\n\nUn ejecutivo te explica el modelo y el ahorro estimado.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "arr_equipo": {
+   "t": "Arrendamos equipos por días, meses o hasta un año, con servicio técnico propio. ¿Qué equipo necesitas?",
+   "op": [
+    [
+     "Destructora documentos",
+     "arr_plazo",
+     {
+      "equipo": "destructora de documentos"
+     }
+    ],
+    [
+     "Destructora de discos",
+     "arr_plazo",
+     {
+      "equipo": "destructora de discos duros"
+     }
+    ],
+    [
+     "Prensa o compactadora",
+     "arr_plazo",
+     {
+      "equipo": "prensa o compactadora"
+     }
+    ],
+    [
+     "No lo sé",
+     "arr_plazo",
+     {
+      "equipo": "un equipo por definir"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ],
+   "motivo": "Arriendo de equipos"
+  },
+  "arr_plazo": {
+   "t": "¿Por cuánto tiempo lo necesitas?",
+   "op": [
+    [
+     "Por días",
+     "arr_cuando",
+     {
+      "plazo": "por días"
+     }
+    ],
+    [
+     "Por meses",
+     "arr_cuando",
+     {
+      "plazo": "por meses"
+     }
+    ],
+    [
+     "Por un año o más",
+     "arr_cuando",
+     {
+      "plazo": "por un año o más"
+     }
+    ]
+   ]
+  },
+  "arr_cuando": {
+   "t": "¿Para qué fecha y en qué comuna o ciudad lo necesitas? (ej.: «a fines de noviembre, en Providencia»)",
+   "pide": "cuando",
+   "val": "texto",
+   "sig": "arr_reco"
+  },
+  "arr_reco": {
+   "t": "Anotado: arriendo de *{equipo}* {plazo}, {cuando}.\n\nUn ejecutivo coordina una visita en terreno y te envía la cotización. Más información: {SITIO}arriendo-de-equipos/",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "ley_intro": {
+   "t": "La *Ley 21.719* de protección de datos personales comienza a regir plenamente en diciembre de 2026 (*{dias_txt}*). Botar un documento no elimina su información: hay que destruirlo de forma segura y dejar registro.\n\n¿Quieres hacer el autodiagnóstico de 6 preguntas? Toma 1 minuto.",
+   "op": [
+    [
+     "Autodiagnóstico",
+     "d1",
+     {
+      "d1": "",
+      "d2": "",
+      "d3": "",
+      "d4": "",
+      "d5": "",
+      "d6": ""
+     }
+    ],
+    [
+     "Leer la guía",
+     "ley_guia",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ]
+   ]
+  },
+  "ley_guia": {
+   "t": "Aquí está la guía completa con errores comunes, niveles de seguridad y preguntas frecuentes:\n{SITIO}ley-21719-estas-preparado/\n\nEs información general, no asesoría legal.",
+   "op": [
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "d1": {
+   "t": "Pregunta 1 de 6\n¿Sabes qué documentos con datos personales manejas (clientes, trabajadores, pacientes)?",
+   "op": [
+    [
+     "Sí",
+     "d2",
+     {
+      "d1": "si"
+     }
+    ],
+    [
+     "No",
+     "d2",
+     {
+      "d1": "no"
+     }
+    ]
+   ]
+  },
+  "d2": {
+   "t": "Pregunta 2 de 6\n¿Tienes una política escrita de conservación y eliminación de documentos?",
+   "op": [
+    [
+     "Sí",
+     "d3",
+     {
+      "d2": "si"
+     }
+    ],
+    [
+     "No",
+     "d3",
+     {
+      "d2": "no"
+     }
+    ]
+   ]
+  },
+  "d3": {
+   "t": "Pregunta 3 de 6\n¿Lo que ya no necesitas se destruye de forma que no se pueda leer?",
+   "op": [
+    [
+     "Sí",
+     "d4",
+     {
+      "d3": "si"
+     }
+    ],
+    [
+     "No",
+     "d4",
+     {
+      "d3": "no"
+     }
+    ]
+   ]
+  },
+  "d4": {
+   "t": "Pregunta 4 de 6\n¿Dejas registro de cada eliminación (fecha, responsable y tipo)?",
+   "op": [
+    [
+     "Sí",
+     "d5",
+     {
+      "d4": "si"
+     }
+    ],
+    [
+     "No",
+     "d5",
+     {
+      "d4": "no"
+     }
+    ]
+   ]
+  },
+  "d5": {
+   "t": "Pregunta 5 de 6\n¿Los discos duros y equipos en desuso se destruyen de forma segura?",
+   "op": [
+    [
+     "Sí",
+     "d6",
+     {
+      "d5": "si"
+     }
+    ],
+    [
+     "No",
+     "d6",
+     {
+      "d5": "no"
+     }
+    ]
+   ]
+  },
+  "d6": {
+   "t": "Pregunta 6 de 6\n¿Tu equipo sabe qué nivel de seguridad usar según la información?",
+   "op": [
+    [
+     "Sí",
+     "diag",
+     {
+      "d6": "si"
+     }
+    ],
+    [
+     "No",
+     "diag",
+     {
+      "d6": "no"
+     }
+    ]
+   ]
+  },
+  "diag": {
+   "t": "Tu resultado: *{nivel_diag}* ({pts} de 6 puntos resueltos).\n{faltan}\nEs una orientación general, no asesoría legal. Un ejecutivo puede ayudarte a cerrar las brechas con el equipo adecuado.",
+   "op": [
+    [
+     "Pedir asesoría",
+     "derivar",
+     {
+      "motivo": "Asesoría Ley 21.719 (autodiagnóstico: {pts} de 6)"
+     }
+    ],
+    [
+     "Leer la guía",
+     "ley_guia",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ],
+   "accion": "diag"
+  },
+  "serv_tipo": {
+   "t": "Nuestro servicio técnico propio atiende equipos HSM. ¿Qué necesitas?",
+   "op": [
+    [
+     "Mantención",
+     "serv_modelo",
+     {
+      "servicio": "mantención"
+     }
+    ],
+    [
+     "Falla o reparación",
+     "serv_modelo",
+     {
+      "servicio": "reparación de una falla"
+     }
+    ],
+    [
+     "Repuestos",
+     "serv_modelo",
+     {
+      "servicio": "repuestos"
+     }
+    ],
+    [
+     "Aceite, cintas, alambre",
+     "serv_modelo",
+     {
+      "servicio": "insumos (aceite, cintas o alambre)"
+     }
+    ]
+   ]
+  },
+  "serv_modelo": {
+   "t": "¿Qué modelo de equipo es? (viene en la etiqueta; si no lo sabes, escribe «no sé»)",
+   "pide": "modelo",
+   "val": "texto",
+   "sig": "serv_reco"
+  },
+  "serv_reco": {
+   "t": "Anotado: *{servicio}* para el equipo *{modelo}*. Un ejecutivo de servicio técnico te contactará para coordinar.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "info": {
+   "t": "*HSM Chile* (Imex Estado Ltda.)\n📍 Santa Bernardita 12025, Parque Industrial Puerta Sur, San Bernardo\n📞 (02) 2396 4723\n✉️ contacto@hsm.cl\n🕘 Lunes a jueves de 8:30 a 16:30 y viernes de 8:30 a 15:00\n\nMapa: https://maps.google.com/?q=Santa+Bernardita+12025+San+Bernardo",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "derivar": {
+   "t": "Con gusto te conecto con un ejecutivo. Para que te atienda mejor, ¿cuál es tu *nombre*?",
+   "pide": "nombre",
+   "val": "texto",
+   "sig": "der_empresa"
+  },
+  "der_empresa": {
+   "t": "Gracias, {nombre}. ¿De qué *empresa o institución* eres? (si eres persona natural, escribe «particular»)",
+   "pide": "empresa",
+   "val": "texto",
+   "sig": "der_correo"
+  },
+  "der_correo": {
+   "t": "¿A qué *correo* te enviamos la cotización? (si prefieres que te contactemos solo por este chat, escribe «omitir»)",
+   "pide": "email",
+   "val": "email",
+   "omitir": true,
+   "sig": "der_tel"
+  },
+  "der_tel": {
+   "t": "¿Y un *teléfono* para llamarte? (opcional, escribe «omitir»)",
+   "pide": "tel",
+   "val": "tel",
+   "omitir": true,
+   "si_falta": "tel",
+   "sig": "der_fin"
+  },
+  "der_fin": {
+   "t": "¡Listo, {nombre}! Registré tu solicitud: *{motivo}*.\n\n{estado_horario}\n\nTambién puedes llamar al (02) 2396 4723 o escribir a contacto@hsm.cl. ¿Necesitas algo más?",
+   "op": [
+    [
+     "Menú principal",
+     "inicio"
+    ],
+    [
+     "Eso es todo",
+     "fin",
+     {}
+    ]
+   ],
+   "accion": "derivar"
+  },
+  "fin": {
+   "t": "¡Gracias por escribir a HSM Chile! Si necesitas algo más, escribe *menú* cuando quieras. 👋"
+  },
+  "no_entiendo": {
+   "t": "No estoy seguro de haber entendido 🤔. Puedes elegir una opción o escribir, por ejemplo: «destructora», «prensa», «arriendo», «ley», «servicio técnico» u «horario».",
+   "op": [
+    [
+     "Menú principal",
+     "inicio"
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar"
+    ]
+   ]
+  },
+  "faq_precio": {
+   "t": "Los *precios, el stock y los plazos* los confirma un ejecutivo, porque dependen del modelo, la cantidad y si es compra o arriendo. Si me cuentas qué necesitas, primero te oriento y luego un ejecutivo te envía la cotización.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de precio o disponibilidad"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_garantia": {
+   "t": "Muchas destructoras HSM tienen *cilindro de corte con garantía de por vida*, y varios modelos hasta 3 años de cobertura total (las condiciones dependen del modelo: se confirman en la ficha técnica o con un ejecutivo). Además contamos con servicio técnico propio y repuestos.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de garantía"
+     }
+    ],
+    [
+     "Servicio técnico",
+     "serv_tipo",
+     {
+      "motivo": "Servicio técnico o repuestos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_despacho": {
+   "t": "El despacho o retiro se coordina con un ejecutivo según tu ciudad y el equipo. Los plazos y costos de envío los confirma él al enviarte la cotización.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de despacho"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_pago": {
+   "t": "Atendemos a empresas, instituciones y personas. La facturación, las formas de pago y las condiciones comerciales las coordina el ejecutivo junto con la cotización.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de pago o facturación"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_din": {
+   "t": "La norma *DIN 66399* clasifica la seguridad de la destrucción de P-1 (básica) a P-7 (máxima). Para datos personales, financieros o médicos se recomienda *P-4 o superior*. Es una orientación general: el nivel de cada modelo está en su ficha técnica.\n\nGuía y tabla: {SITIO}ley-21719-estas-preparado/",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Ley 21.719",
+     "ley_intro",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_licitacion": {
+   "t": "Para licitaciones, convenios o compras institucionales, un ejecutivo revisa tu caso (bases, plazos y documentación). Déjame tus datos y te contacta.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Licitación o compra institucional"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_distribuidor": {
+   "t": "Si quieres distribuir o revender HSM, un ejecutivo comercial te contacta para conversar las condiciones. Déjame tus datos.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Distribuidor o revendedor"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_reclamo": {
+   "t": "Lamento el inconveniente. Para atenderlo bien, te conecto con un ejecutivo que lo revisará contigo.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Reclamo o problema con un producto"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_instalacion": {
+   "t": "En el *arriendo* dejamos el equipo operativo y capacitamos a tu equipo. Para una compra, un ejecutivo coordina la entrega y la puesta en marcha según el modelo.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de instalación o capacitación"
+     }
+    ],
+    [
+     "Arriendo de equipos",
+     "arr_equipo",
+     {
+      "motivo": "Arriendo de equipos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_visita": {
+   "t": "Coordinamos *visitas en terreno* para entender tu necesidad y recomendarte el equipo, por ejemplo en proyectos de arriendo. El ejecutivo agenda según tu comuna.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Solicitud de visita en terreno"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_quien": {
+   "t": "*HSM* es una marca alemana fundada en 1971, especializada en destrucción de documentos, prensas y reciclaje. En Chile la opera *Imex Estado Ltda.* desde San Bernardo, con servicio técnico propio.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  }
+ },
+ "intenciones": [
+  {
+   "p": [
+    "precio",
+    "precios",
+    "cuanto cuesta",
+    "cuánto cuesta",
+    "cuanto vale",
+    "cuánto vale",
+    "valor",
+    "descuento",
+    "oferta",
+    "stock",
+    "disponibilidad",
+    "plazo de entrega",
+    "cuanto demora",
+    "cuánto demora"
+   ],
+   "va": "faq_precio",
+   "set": {}
+  },
+  {
+   "p": [
+    "garantía",
+    "garantia",
+    "cuanto dura",
+    "cuánto dura"
+   ],
+   "va": "faq_garantia",
+   "set": {}
+  },
+  {
+   "p": [
+    "despacho",
+    "envío",
+    "envio",
+    "envios",
+    "envían",
+    "envian",
+    "regiones",
+    "retiro",
+    "retirar",
+    "entrega"
+   ],
+   "va": "faq_despacho",
+   "set": {}
+  },
+  {
+   "p": [
+    "factura",
+    "boleta",
+    "pago",
+    "pagar",
+    "transferencia",
+    "crédito",
+    "credito",
+    "orden de compra",
+    "tarjeta"
+   ],
+   "va": "faq_pago",
+   "set": {}
+  },
+  {
+   "p": [
+    "din",
+    "p-4",
+    "p4",
+    "p-5",
+    "p-2",
+    "p-3",
+    "p-6",
+    "p-7",
+    "nivel de seguridad",
+    "niveles de seguridad",
+    "partículas",
+    "particulas",
+    "tiras"
+   ],
+   "va": "faq_din",
+   "set": {}
+  },
+  {
+   "p": [
+    "licitación",
+    "licitacion",
+    "mercado público",
+    "mercado publico",
+    "convenio",
+    "municipalidad",
+    "institución",
+    "institucion"
+   ],
+   "va": "faq_licitacion",
+   "set": {}
+  },
+  {
+   "p": [
+    "distribuidor",
+    "distribuir",
+    "revender",
+    "revendedor",
+    "mayorista"
+   ],
+   "va": "faq_distribuidor",
+   "set": {}
+  },
+  {
+   "p": [
+    "reclamo",
+    "reclamos",
+    "no funciona",
+    "defectuosa",
+    "defectuoso",
+    "devolución",
+    "devolucion",
+    "mala atención",
+    "mala atencion"
+   ],
+   "va": "faq_reclamo",
+   "set": {}
+  },
+  {
+   "p": [
+    "instalación",
+    "instalacion",
+    "capacitación",
+    "capacitacion",
+    "manual",
+    "instructivo"
+   ],
+   "va": "faq_instalacion",
+   "set": {}
+  },
+  {
+   "p": [
+    "visita",
+    "visitan",
+    "terreno",
+    "demostración",
+    "demostracion"
+   ],
+   "va": "faq_visita",
+   "set": {}
+  },
+  {
+   "p": [
+    "quiénes son",
+    "quienes son",
+    "quién es hsm",
+    "quien es hsm",
+    "quienes somos",
+    "alemana"
+   ],
+   "va": "faq_quien",
+   "set": {}
+  },
+  {
+   "p": [
+    "arriendo",
+    "arrendar",
+    "arriendan",
+    "alquiler",
+    "alquilar"
+   ],
+   "va": "arr_equipo",
+   "set": {
+    "motivo": "Arriendo de equipos"
+   }
+  },
+  {
+   "p": [
+    "servicio técnico",
+    "servicio tecnico",
+    "reparar",
+    "reparación",
+    "reparacion",
+    "falla",
+    "repuesto",
+    "repuestos",
+    "mantención",
+    "mantencion",
+    "aceite",
+    "cinta",
+    "alambre"
+   ],
+   "va": "serv_tipo",
+   "set": {
+    "motivo": "Servicio técnico o repuestos"
+   }
+  },
+  {
+   "p": [
+    "ley",
+    "21.719",
+    "21719",
+    "datos personales",
+    "protección de datos",
+    "proteccion de datos"
+   ],
+   "va": "ley_intro",
+   "set": {
+    "motivo": "Consulta Ley 21.719"
+   }
+  },
+  {
+   "p": [
+    "disco",
+    "discos duros",
+    "ssd",
+    "hdd",
+    "pendrive",
+    "servidor"
+   ],
+   "va": "disco_tipo",
+   "set": {
+    "motivo": "Destrucción de discos duros"
+   }
+  },
+  {
+   "p": [
+    "prensa",
+    "compactadora",
+    "compactar",
+    "cartón",
+    "carton",
+    "pet",
+    "botellas",
+    "reciclar",
+    "profipack",
+    "recicladora"
+   ],
+   "va": "prensa_mat",
+   "set": {
+    "motivo": "Prensas o recicladora de cartón"
+   }
+  },
+  {
+   "p": [
+    "destructora",
+    "destruir papel",
+    "trituradora",
+    "trituradora de papel",
+    "triturar",
+    "papel",
+    "documentos",
+    "oficina"
+   ],
+   "va": "dest_vol",
+   "set": {
+    "motivo": "Cotización de destructora de documentos"
+   }
+  },
+  {
+   "p": [
+    "horario",
+    "dirección",
+    "direccion",
+    "donde",
+    "dónde",
+    "ubicación",
+    "ubicacion",
+    "teléfono",
+    "telefono",
+    "contacto",
+    "correo",
+    "mapa"
+   ],
+   "va": "info",
+   "set": {}
+  },
+  {
+   "p": [
+    "precio",
+    "precios",
+    "cotizar",
+    "cotización",
+    "cotizacion",
+    "comprar"
+   ],
+   "va": "inicio",
+   "set": {}
+  }
+ ],
+ "comandos": {
+  "menu": [
+   "menu",
+   "menú",
+   "inicio",
+   "hola",
+   "buenas",
+   "buenos días",
+   "buenos dias",
+   "buenas tardes",
+   "volver",
+   "empezar",
+   "reiniciar"
+  ],
+  "ejecutivo": [
+   "ejecutivo",
+   "humano",
+   "persona",
+   "asesor",
+   "vendedor",
+   "agente",
+   "hablar con alguien",
+   "operador"
+  ],
+  "fin": [
+   "gracias",
+   "chao",
+   "adiós",
+   "adios",
+   "eso es todo",
+   "listo gracias",
+   "muchas gracias"
+  ]
+ },
+ "en_horario": "Un ejecutivo te contactará *hoy, dentro de nuestro horario de atención*.",
+ "fuera_horario": "Ahora estamos fuera de horario ({h}), pero tu solicitud quedó registrada: un ejecutivo te contactará el *próximo día hábil*."
+}

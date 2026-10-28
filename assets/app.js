@@ -385,9 +385,23 @@
   }
 
   /* ---------- mensajes en pantalla ---------- */
+  var FB = []; try { FB = JSON.parse(localStorage.getItem("hsm_bot_feedback") || "[]"); } catch (x) {}
+  function guardarFb() { try { localStorage.setItem("hsm_bot_feedback", JSON.stringify(FB)); } catch (x) {} var c = $("demo-contador"); if (c) { c.textContent = FB.length; } }
+  function ultimoCliente() { for (var i = E.log.length - 1; i >= 0; i--) { if (E.log[i][0] === "yo") { return E.log[i][1]; } } return ""; }
+  function voto(texto, pregunta, v, nota) { FB.push({ fecha: new Date().toISOString(), pregunta: pregunta, respuesta_bot: texto, voto: v, deberia_responder: nota || "" }); guardarFb(); }
   function burbuja(rol, t, noGuardar) {
     var d = document.createElement("div"); d.className = "v3-m " + (rol === "bot" ? "bot" : "yo"); d.innerHTML = html(t); msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
     if (!noGuardar) { E.log.push([rol, t]); guardar(); }
+    if (B.demo && rol === "bot" && !noGuardar) {
+      var q = ultimoCliente(), f = document.createElement("div"); f.className = "v3-fb";
+      f.innerHTML = '<button type="button" data-v="bien" aria-label="Respuesta buena" title="Respuesta buena">👍</button><button type="button" data-v="mal" aria-label="Respuesta mala" title="Respuesta mala">👎</button>';
+      f.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) { return; }
+        var nota = ""; if (b.getAttribute("data-v") === "mal") { nota = window.prompt("¿Cómo debió responder el bot? (opcional)", "") || ""; }
+        voto(t, q, b.getAttribute("data-v"), nota); f.innerHTML = '<span>' + (b.getAttribute("data-v") === "bien" ? "👍 Gracias" : "👎 Anotado") + "</span>";
+      });
+      d.appendChild(f);
+    }
   }
   function chips(lista) {
     quitarChips(); if (!lista || !lista.length) { return; }
@@ -414,6 +428,7 @@
   function derivar() {
     if (E.derivado === E.vars.motivo + "|" + E.vars.nombre) { return; }
     E.derivado = E.vars.motivo + "|" + E.vars.nombre;
+    if (B.demo) { setTimeout(function () { burbuja("bot", "🧪 Simulación: aquí se registraría la solicitud en el administrador y se avisaría al ejecutivo correspondiente.\n\n" + resumenLead()); }, 900); return; }
     var d = new FormData(), v = E.vars, u = ""; try { u = sessionStorage.getItem("hsm_utm") || ""; } catch (x) {}
     d.append("nombre", v.nombre || ""); d.append("email", v.email || ""); d.append("telefono", v.tel || ""); d.append("empresa", v.empresa || ""); d.append("mensaje", resumenLead()); d.append("origen", "asistente-web"); d.append("web", ""); d.append("utm", u);
     var fallo = function () {
@@ -483,4 +498,21 @@
   form.addEventListener("submit", function (e) { e.preventDefault(); var t = txt.value.trim(); if (!t || !F) { return; } txt.value = ""; texto(t); });
   document.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest("[data-abrir-bot]"); if (a) { e.preventDefault(); abrir(); } });
   if (location.hash === "#asistente") { abrir(); }
+  if (B.demo) {
+    window.HSM_BOT_DEMO = {
+      abrir: abrir,
+      total: function () { return FB.length; },
+      reiniciar: function () { try { sessionStorage.removeItem(CLAVE); } catch (x) {} location.reload(); },
+      exportar: function (quien) {
+        var conv = E.log.map(function (m) { return (m[0] === "yo" ? "CLIENTE: " : "BOT: ") + m[1]; }).join("\n");
+        return { probador: quien || "", fecha: new Date().toISOString(), version: B.version || "", comentarios: FB, conversacion: conv };
+      },
+      texto: function (quien) {
+        var x = this.exportar(quien), l = ["PRUEBAS DEL BOT DE HSM", "Probador: " + (quien || "(sin nombre)"), "Versión: " + (x.version || ""), "Fecha: " + x.fecha, "", "COMENTARIOS (" + x.comentarios.length + "):"];
+        x.comentarios.forEach(function (c, i) { l.push((i + 1) + ". [" + (c.voto === "bien" ? "BIEN" : "MAL") + "] Pregunta: " + c.pregunta + "\n   Bot: " + String(c.respuesta_bot).replace(/\n/g, " ").slice(0, 300) + (c.deberia_responder ? "\n   Debió responder: " + c.deberia_responder : "")); });
+        l.push("", "CONVERSACIÓN:", x.conversacion); return l.join("\n");
+      }
+    };
+    guardarFb();
+  }
 })();

@@ -1,0 +1,46 @@
+<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Probar el bot de HSM Chile</title><link rel="stylesheet" href="v3.css">
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 "Roboto Flex",Roboto,Arial,sans-serif;background:#e9edef;color:#222}
+.prov{background:#111;color:#fff;text-align:center;font-weight:700;font-size:13px;text-transform:uppercase;padding:7px;border-bottom:3px solid #c20e1a;letter-spacing:.04em}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 16px 50px;display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start}
+.cel{width:390px;height:760px;max-height:calc(100vh - 80px);background:#111;border-radius:42px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.35);position:sticky;top:14px}
+.pantalla{background:#efeae2;border-radius:32px;height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.wh{background:#075e54;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}.wh .av{width:40px;height:40px;border-radius:50%;background:#fff;color:#c20e1a;font-weight:900;display:flex;align-items:center;justify-content:center}.wh strong{display:block;line-height:1.1}.wh small{opacity:.85;font-size:.78rem}
+.v3-chat{position:static!important;display:flex!important;width:auto!important;height:auto!important;max-height:none!important;max-width:none!important;flex:1;min-height:0;border-radius:0!important;box-shadow:none!important;background:#efeae2!important;right:auto;bottom:auto}
+.v3-chat-cab{display:none!important}.v3-chat-btn{display:none!important}
+.v3-chat-msgs{background:#efeae2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='8' cy='8' r='1.5' fill='%23d9d3c7'/%3E%3C/svg%3E")}
+.v3-m.yo{background:#d9fdd3}.v3-chip{border-color:#075e54;color:#075e54}.v3-chip:hover{background:#075e54;color:#fff}
+.v3-chat-in{background:#f0f2f5}.v3-chat-in input{border-radius:999px}.v3-chat-in button{background:#075e54}
+.v3-chat-pie{background:#f0f2f5}
+.v3-fb{margin-top:6px;display:flex;gap:6px;align-items:center;font-size:.8rem;color:#666}.v3-fb button{border:1px solid #ddd;background:#fafafa;border-radius:999px;padding:1px 9px;cursor:pointer;font-size:.95rem}.v3-fb button:hover{background:#eee}
+.v3-m{font-size:.93rem}
+.panel h1{margin:0 0 6px;font-size:1.7rem;color:#c20e1a}.panel h2{font-size:1.1rem;margin:22px 0 8px}
+.card{background:#fff;border:1px solid #dcdfe2;border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.card ol{margin:6px 0 0 18px;padding:0}.card li{margin:5px 0}
+.ideas{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px}.ideas button{border:1.5px solid #075e54;background:#fff;color:#075e54;border-radius:999px;padding:7px 14px;font:inherit;font-size:.9rem;cursor:pointer}.ideas button:hover{background:#075e54;color:#fff}
+.acc{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}.btn{border:0;background:#c20e1a;color:#fff;border-radius:8px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}.btn:hover{background:#88020b}.btn.l{background:#fff;color:#c20e1a;border:1.5px solid #c20e1a}.btn.l:hover{background:#fdecee}
+.n{display:inline-block;background:#c20e1a;color:#fff;border-radius:999px;padding:0 10px;font-weight:700}
+.aviso{font-size:.88rem;color:#555}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:0}.cel{width:100%;height:calc(100vh - 36px);max-height:none;border-radius:0;padding:0;position:static}.pantalla{border-radius:0}.panel{padding:0 16px 40px}.panel{order:2}}
+</style></head><body><div class="prov">Prueba del bot · versión de demostración, no es el sitio oficial</div>
+<div class="wrap"><div class="cel"><div class="pantalla"><div class="wh"><div class="av">H</div><div><strong>HSM Chile</strong><small>asistente virtual · en línea</small></div></div>
+<button id="v3-chat-abrir" type="button" hidden></button>
+<section class="v3-chat" id="v3-chat"><div class="v3-chat-cab"><button id="v3-chat-cerrar" type="button">×</button></div><div class="v3-chat-msgs" id="v3-chat-msgs" aria-live="polite"></div>
+<form class="v3-chat-in" id="v3-chat-form" autocomplete="off"><input type="text" id="v3-chat-txt" placeholder="Escribe un mensaje" aria-label="Escribe tu mensaje" maxlength="400"><button type="submit">Enviar</button></form><div class="v3-chat-pie">Simulación: no se envía nada a nadie.</div></section></div></div>
+<div class="panel"><h1>Prueba el bot de HSM Chile</h1><p>Conversa como si fueras un cliente. Este es el mismo bot que irá a WhatsApp. Tus comentarios ayudan a entrenarlo.</p>
+<div class="card"><h2 style="margin-top:0">Cómo probar</h2><ol><li>Escribe o toca los botones del celular, como en WhatsApp.</li><li>Haz preguntas reales: precios, garantía, despacho, arriendo, la Ley 21.719, un reclamo.</li><li>Toca 👍 o 👎 bajo cada respuesta. Si es 👎, cuéntanos cómo debió responder.</li><li>Al terminar, pulsa <strong>Enviar mis comentarios</strong>.</li></ol></div>
+<div class="card"><h2 style="margin-top:0">Ideas para preguntar</h2><ul class="ideas"><li><button type="button" data-i="Hola, necesito una destructora para 10 personas">Hola, necesito una destructora para 10 personas</button></li><li><button type="button" data-i="¿Cuánto cuesta una prensa?">¿Cuánto cuesta una prensa?</button></li><li><button type="button" data-i="¿Me sirve para cumplir la Ley 21.719?">¿Me sirve para cumplir la Ley 21.719?</button></li><li><button type="button" data-i="Quiero arrendar una destructora por 2 meses">Quiero arrendar una destructora por 2 meses</button></li><li><button type="button" data-i="¿Qué significa nivel P-4?">¿Qué significa nivel P-4?</button></li><li><button type="button" data-i="¿Tienen garantía?">¿Tienen garantía?</button></li><li><button type="button" data-i="Mi destructora no funciona">Mi destructora no funciona</button></li><li><button type="button" data-i="¿Hacen despacho a regiones?">¿Hacen despacho a regiones?</button></li><li><button type="button" data-i="Quiero ser distribuidor">Quiero ser distribuidor</button></li><li><button type="button" data-i="Quiero hablar con una persona">Quiero hablar con una persona</button></li></ul></div>
+<div class="card"><strong>Comentarios anotados: <span class="n" id="demo-contador">0</span></strong><div class="acc"><button class="btn" id="enviar" type="button">Enviar mis comentarios</button><button class="btn l" id="bajar" type="button">Descargar archivo</button><button class="btn l" id="copiar" type="button">Copiar texto</button><button class="btn l" id="reiniciar" type="button">Empezar de nuevo</button></div>
+<p class="aviso">«Enviar» abre tu correo con todo escrito, dirigido a contacto@hsm.cl. Los comentarios se guardan solo en este navegador hasta que los envíes. No escribas datos personales reales ni sensibles.</p></div></div></div>
+<script>window.HSM={raiz:location.pathname.replace(/bot-demo\/(index\.html)?$/,"")};window.HSM_BOT={flujo:"flujo-bot.json",wsp:"",demo:true,version:"V3"};</script>
+<script src="bot.js"></script>
+<script>
+(function(){var D=function(){return window.HSM_BOT_DEMO},q=function(i){return document.getElementById(i)};
+function quien(){var n="";try{n=localStorage.getItem("hsm_bot_probador")||""}catch(x){}if(!n){n=window.prompt("Tu nombre (para saber quién comenta):","")||"";try{localStorage.setItem("hsm_bot_probador",n)}catch(x){}}return n}
+setTimeout(function(){q("v3-chat-abrir").click()},50);
+document.querySelectorAll(".ideas button").forEach(function(b){b.addEventListener("click",function(){var t=q("v3-chat-txt");t.value=b.getAttribute("data-i");q("v3-chat-form").requestSubmit();})});
+q("enviar").onclick=function(){var t=D().texto(quien());location.href="mailto:contacto@hsm.cl?subject="+encodeURIComponent("Pruebas del bot de HSM (V3)")+"&body="+encodeURIComponent(t.slice(0,6000))};
+q("bajar").onclick=function(){var b=new Blob([JSON.stringify(D().exportar(quien()),null,1)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="pruebas_bot_hsm_V3.json";a.click()};
+q("copiar").onclick=function(){var t=D().texto(quien());(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){alert("Texto copiado. Pégalo en un correo o mensaje.")}).catch(function(){window.prompt("Copia este texto:",t.slice(0,2000))})};
+q("reiniciar").onclick=function(){if(confirm("¿Empezar la conversación de nuevo? (los comentarios anotados se conservan)")){D().reiniciar()}};})();
+</script></body></html>
