@@ -1139,7 +1139,7 @@
    "sig": "ahorro_fin"
   },
   "ahorro_fin": {
-   "t": "¡Gracias! Con *{kg_mes}* al mes y un gasto de *{costo_retiro}*, un ejecutivo te prepara una *estimación de ahorro y de recuperación de la inversión* con el equipo adecuado, incluyendo la posible venta del material compactado.\n\n¿Dejamos tus datos para enviártela?",
+   "t": "¡Gracias! Con una generación de *{kg_mes}* y un gasto de *{costo_retiro}*, un ejecutivo te prepara una *estimación de ahorro y de recuperación de la inversión* con el equipo adecuado, incluyendo la posible venta del material compactado.\n\n¿Dejamos tus datos para enviártela?",
    "op": [
     [
      "Quiero mi estimación",
