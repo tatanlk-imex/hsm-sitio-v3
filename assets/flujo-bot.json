@@ -83,6 +83,20 @@
      {
       "motivo": "Consulta general"
      }
+    ],
+    [
+     "¿Por qué HSM?",
+     "porque",
+     {
+      "motivo": "Consulta general"
+     }
+    ],
+    [
+     "Reciclaje y ahorro",
+     "v_ahorro",
+     {
+      "motivo": "Reciclaje y ahorro (prensas o ProfiPack)"
+     }
     ]
    ]
   },
@@ -727,10 +741,10 @@
    "val": "tel",
    "omitir": true,
    "si_falta": "tel",
-   "sig": "der_fin"
+   "sig": "der_cuando"
   },
   "der_fin": {
-   "t": "¡Listo, {nombre}! Registré tu solicitud: *{motivo}*.\n\n{estado_horario}\n\nTambién puedes llamar al (02) 2396 4723 o escribir a contacto@hsm.cl. ¿Necesitas algo más?",
+   "t": "¡Excelente decisión, {nombre}! Tu solicitud quedó registrada: *{motivo}*.\n\n{estado_horario}\n\nPara avanzar rápido, el ejecutivo te preguntará por cantidad o volumen, plazo y comuna de entrega: así puedes tener tu equipo funcionando cuanto antes 💪\n\nTambién puedes llamar al (02) 2396 4723 o escribir a contacto@hsm.cl. ¿Necesitas algo más?",
    "op": [
     [
      "Menú principal",
@@ -961,6 +975,358 @@
      "inicio"
     ]
    ]
+  },
+  "porque": {
+   "t": "*HSM es una inversión, no un gasto*: protege tu información confidencial, es segura de operar, dura años y tiene respaldo local. Marca alemana desde 1971, con servicio técnico propio en Chile.\n\n¿Qué te gustaría conocer?",
+   "op": [
+    [
+     "Proteger mi información",
+     "v_info",
+     {}
+    ],
+    [
+     "Seguridad al operar",
+     "v_segura",
+     {}
+    ],
+    [
+     "Calidad y durabilidad",
+     "v_calidad",
+     {}
+    ],
+    [
+     "Reciclaje y ahorro",
+     "v_ahorro",
+     {
+      "motivo": "Reciclaje y ahorro (prensas o ProfiPack)"
+     }
+    ],
+    [
+     "Tengo una duda",
+     "v_obj",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "v_info": {
+   "t": "*Tu información es tu activo más sensible.* Un documento botado al papelero sigue siendo legible; una destructora HSM lo deja irrecuperable en el momento, sin pasar por otras manos ni por transporte.\n\n• Para datos personales, financieros o médicos HSM recomienda nivel *P-4 o superior* (DIN 66399).\n• Según HSM, destruir internamente ofrece el mayor control: evita retiro, traslado y acumulación.\n• Con la Ley 21.719 ({dias_txt}), poder demostrar cómo eliminas datos es una ventaja.\n\nEs información general, no asesoría legal.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Seguridad al operar",
+     "v_segura",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Protección de información confidencial"
+     }
+    ]
+   ]
+  },
+  "v_segura": {
+   "t": "*Seguridad al operar.* Las destructoras HSM incorporan protecciones; por ejemplo, un elemento de seguridad que detiene la alimentación con una leve presión y evita que entre algo por accidente. Muchos modelos suman reversa, protección contra sobrecarga y modo ahorro de energía (según modelo).\n\n*Buenas prácticas de prevención* (siempre con el manual):\n1) Sin corbatas, bufandas, joyas ni pelo suelto cerca de la entrada.\n2) Manos lejos de la boca de alimentación.\n3) Desenchufa antes de despejar un atasco o lubricar.\n4) No excedas la capacidad de hojas.\n5) Capacita a quien la use y mantenla fuera del alcance de niños.",
+   "op": [
+    [
+     "Seguridad en prensas",
+     "v_segura_p",
+     {}
+    ],
+    [
+     "Calidad y garantía",
+     "v_calidad",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de seguridad al operar"
+     }
+    ]
+   ]
+  },
+  "v_segura_p": {
+   "t": "*Prensas y compactadoras.* Tienen fuerza y partes móviles, por eso se operan con las protecciones del fabricante (cierre y control de la prensa; el detalle depende del modelo).\n\n*Buenas prácticas:*\n1) Solo personal capacitado.\n2) Nunca anular ni puentear un dispositivo de seguridad.\n3) Manos y cuerpo fuera de la cámara cuando la prensa se mueve.\n4) Corta la energía antes de cualquier mantención.\n5) Sigue el manual y la señalética.\n\nUn ejecutivo te entrega las condiciones de seguridad del modelo que elijas.",
+   "op": [
+    [
+     "Ahorro con prensas",
+     "v_ahorro",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de seguridad en prensas"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "v_calidad": {
+   "t": "*Calidad alemana que dura.* HSM fabrica sus destructoras en Alemania desde 1971.\n\n• Cilindros de corte de *acero macizo endurecido*, que soportan grapas y clips.\n• *Garantía de por vida* en el cilindro de corte de las series SECURIO y Pure en niveles P-2 a P-5 (con excepciones por modelo) y varios modelos con 3 a 5 años de cobertura, según el fabricante.\n• *Respaldo en Chile:* servicio técnico propio, repuestos e insumos.\n\nLas condiciones exactas en Chile las confirma tu ejecutivo en la cotización.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de calidad y garantía"
+     }
+    ],
+    [
+     "Reciclaje y ahorro",
+     "v_ahorro",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "v_ahorro": {
+   "t": "*Reciclar también es negocio.* Con prensas HSM reduces hasta 95 % el volumen de cartón, film o PET (según HSM):\n• Menos viajes de retiro y menos transporte.\n• Menos espacio: HSM compara 20 m² de contenedor con 6 m² de una V-Press 860 Plus.\n• Fardos homogéneos que puedes vender a recicladores como materia prima (el valor depende del mercado y la calidad).\n• Con *ProfiPack* conviertes tu cartón en relleno y dejas de comprar plástico o poliestireno.\n\nCaso publicado: un fabricante alemán reportó ahorros sobre 100.000 € al año y retorno en 9 meses (resultado de un cliente, no una promesa).",
+   "op": [
+    [
+     "Calcular mi ahorro",
+     "ahorro_kg",
+     {
+      "motivo": "Cálculo de ahorro por reciclaje"
+     }
+    ],
+    [
+     "Ver prensas",
+     "prensa_mat",
+     {
+      "motivo": "Prensas o recicladora de cartón"
+     }
+    ],
+    [
+     "Ver ProfiPack",
+     "reco_profi",
+     {
+      "motivo": "Recicladora ProfiPack"
+     }
+    ]
+   ]
+  },
+  "ahorro_kg": {
+   "t": "Para estimar tu ahorro necesito 2 datos. *1)* ¿Cuánto cartón o plástico generas al mes, más o menos? (ej.: «800 kg» o «3 toneladas»)",
+   "pide": "kg_mes",
+   "val": "texto",
+   "sig": "ahorro_costo"
+  },
+  "ahorro_costo": {
+   "t": "*2)* ¿Cuánto pagas hoy por retirarlo o desecharlo, y cada cuánto? (ej.: «$80.000 cada semana»; si no lo sabes, escribe «no sé»)",
+   "pide": "costo_retiro",
+   "val": "texto",
+   "sig": "ahorro_fin"
+  },
+  "ahorro_fin": {
+   "t": "¡Gracias! Con *{kg_mes}* al mes y un gasto de *{costo_retiro}*, un ejecutivo te prepara una *estimación de ahorro y de recuperación de la inversión* con el equipo adecuado, incluyendo la posible venta del material compactado.\n\n¿Dejamos tus datos para enviártela?",
+   "op": [
+    [
+     "Quiero mi estimación",
+     "derivar",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "v_obj": {
+   "t": "Es normal tener dudas antes de invertir. ¿Cuál es la tuya?",
+   "op": [
+    [
+     "Me parece caro",
+     "obj_caro",
+     {}
+    ],
+    [
+     "Uso servicio externo",
+     "obj_externo",
+     {}
+    ],
+    [
+     "Lo voy a pensar",
+     "obj_pensar",
+     {}
+    ],
+    [
+     "Quiero comparar",
+     "obj_comparar",
+     {}
+    ],
+    [
+     "¿Y si falla?",
+     "obj_falla",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "obj_caro": {
+   "t": "Te entiendo. Mira la cuenta completa: una destructora HSM es una *inversión de largo plazo* (cilindros de acero con garantía de por vida en varias series, calidad alemana y respaldo local), y una filtración de datos puede costar mucho más en riesgo legal y reputación.\n\nAdemás puedes partir sin gran inversión con *arriendo* por días, meses o un año. ¿Qué prefieres?",
+   "op": [
+    [
+     "Ver arriendo",
+     "arr_equipo",
+     {
+      "motivo": "Arriendo de equipos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Cotización: precio y alternativas"
+     }
+    ],
+    [
+     "Ver modelos",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ]
+   ]
+  },
+  "obj_externo": {
+   "t": "Un servicio externo sirve para grandes volúmenes, pero suma *retiro, traslado y almacenamiento*: cada etapa es un punto de exposición, y sus costos suelen subestimarse (según HSM). Con una destructora propia destruyes en el momento, sin intermediarios.\n\nMuchas empresas combinan ambas: destructora para lo sensible y servicio para el resto. Un ejecutivo te ayuda a comparar números.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Comparar destrucción interna vs servicio externo"
+     }
+    ],
+    [
+     "Ver modelos",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "obj_pensar": {
+   "t": "¡Claro! Para decidir con datos, un ejecutivo puede prepararte una *cotización sin compromiso*, con modelo, nivel de seguridad y opciones de compra o arriendo. Y como la Ley 21.719 rige en {dias_txt}, partir con tiempo evita apuros de última hora. ¿Te la preparamos?",
+   "op": [
+    [
+     "Sí, prepárenla",
+     "derivar",
+     {
+      "motivo": "Cotización sin compromiso"
+     }
+    ],
+    [
+     "Seguir informándome",
+     "porque",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "obj_comparar": {
+   "t": "Buena idea comparar. Fíjate en: 1) nivel de seguridad DIN 66399, 2) garantía y respaldo local, 3) costo de mantención y repuestos, 4) seguridad al operar y 5) capacidad real para tu volumen. Un ejecutivo te entrega una ficha comparativa con estos puntos.",
+   "op": [
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Comparativa de equipos"
+     }
+    ],
+    [
+     "Ver modelos",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "obj_falla": {
+   "t": "Si algo falla no quedas solo: tenemos *servicio técnico propio*, repuestos e insumos en Chile, y para proyectos puntuales puedes arrendar. Varios modelos tienen garantía extendida (según el fabricante).",
+   "op": [
+    [
+     "Servicio técnico",
+     "serv_tipo",
+     {
+      "motivo": "Servicio técnico o repuestos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de respaldo"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "der_cuando": {
+   "t": "Último dato para priorizar tu caso: ¿para cuándo necesitas la solución?",
+   "op": [
+    [
+     "Esta semana",
+     "der_fin",
+     {
+      "urgencia": "esta semana (prioridad alta)"
+     }
+    ],
+    [
+     "Este mes",
+     "der_fin",
+     {
+      "urgencia": "este mes"
+     }
+    ],
+    [
+     "Solo estoy cotizando",
+     "der_fin",
+     {
+      "urgencia": "solo cotizando"
+     }
+    ]
+   ]
   }
  },
  "intenciones": [
@@ -1117,6 +1483,136 @@
     "alemana"
    ],
    "va": "faq_quien",
+   "set": {}
+  },
+  {
+   "p": [
+    "caro",
+    "costoso",
+    "carisimo",
+    "carísimo",
+    "muy caro",
+    "mucho dinero",
+    "presupuesto"
+   ],
+   "va": "obj_caro",
+   "set": {}
+  },
+  {
+   "p": [
+    "por qué hsm",
+    "por que hsm",
+    "por qué elegir",
+    "por que elegir",
+    "inversión",
+    "inversion",
+    "ventajas",
+    "beneficios",
+    "por qué comprar",
+    "por que comprar",
+    "vale la pena"
+   ],
+   "va": "porque",
+   "set": {}
+  },
+  {
+   "p": [
+    "seguridad",
+    "seguro",
+    "seguras",
+    "accidente",
+    "accidentes",
+    "riesgo",
+    "riesgos",
+    "prevención",
+    "prevencion",
+    "dedos",
+    "lesión",
+    "lesion",
+    "cortes",
+    "herramientas de corte",
+    "protección",
+    "proteccion"
+   ],
+   "va": "v_segura",
+   "set": {}
+  },
+  {
+   "p": [
+    "reciclaje",
+    "reciclar",
+    "ahorrar",
+    "ahorro",
+    "vender cartón",
+    "vender carton",
+    "ganar dinero",
+    "recuperar",
+    "transporte",
+    "flete",
+    "fletes",
+    "fardo",
+    "fardos",
+    "venta de cartón",
+    "venta de carton"
+   ],
+   "va": "v_ahorro",
+   "set": {}
+  },
+  {
+   "p": [
+    "durable",
+    "durabilidad",
+    "calidad",
+    "duran",
+    "vida útil",
+    "vida util",
+    "respaldo"
+   ],
+   "va": "v_calidad",
+   "set": {}
+  },
+  {
+   "p": [
+    "confidencial",
+    "confidencialidad",
+    "proteger información",
+    "proteger informacion",
+    "filtración",
+    "filtracion",
+    "fuga",
+    "espionaje"
+   ],
+   "va": "v_info",
+   "set": {}
+  },
+  {
+   "p": [
+    "lo voy a pensar",
+    "lo pensaré",
+    "lo pensare",
+    "pensarlo",
+    "déjame pensar",
+    "dejame pensar"
+   ],
+   "va": "obj_pensar",
+   "set": {}
+  },
+  {
+   "p": [
+    "comparar",
+    "comparación",
+    "comparacion"
+   ],
+   "va": "obj_comparar",
+   "set": {}
+  },
+  {
+   "p": [
+    "servicio externo",
+    "empresa externa",
+    "ya tengo servicio"
+   ],
+   "va": "obj_externo",
    "set": {}
   },
   {
