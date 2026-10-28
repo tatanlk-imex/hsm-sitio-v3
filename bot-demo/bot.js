@@ -65,8 +65,14 @@
     v.pts = String(pts); v.nivel_diag = pts <= 2 ? "Riesgo alto" : pts <= 4 ? "Riesgo medio" : "Riesgo bajo";
     v.faltan = falta.length ? "\nTe falta resolver: " + falta.join("; ") + ".\n" : "";
   }
+  function calculoAhorro() {
+    var v = E.vars, r = parseInt(v.retiros || "0", 10), c = parseInt(v.costo_ret || "0", 10), anual = r * 12 * c;
+    var f = function (n) { return "$" + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+    v.gasto_anual = anual > 0 ? f(anual) : "";
+    v.roi_txt = anual > 0 ? "Hoy gastas unos *" + f(anual) + " al año* solo en retiros (" + r + " al mes × " + f(c) + ").\n\nSi una prensa te permitiera reducir los retiros en 30 %, 50 % o 70 % (escenarios *ilustrativos*, no una promesa), ahorrarías unos *" + f(anual * 0.3) + "*, *" + f(anual * 0.5) + "* o *" + f(anual * 0.7) + "* al año, sin contar el posible ingreso por vender el material compactado ni el costo del equipo." : "Con esos datos no puedo estimar un monto, pero un ejecutivo puede calcularlo contigo.";
+  }
   function resumenLead() {
-    var v = E.vars, ocultas = { estado_horario: 1, dias_txt: 1, __pedirTel: 1, nombre: 1, empresa: 1, email: 1, tel: 1, url: 1, pts: 1, nivel_diag: 1, faltan: 1, motivo: 1, d1: 1, d2: 1, d3: 1, d4: 1, d5: 1, d6: 1 };
+    var v = E.vars, ocultas = { estado_horario: 1, dias_txt: 1, __pedirTel: 1, nombre: 1, empresa: 1, email: 1, tel: 1, url: 1, pts: 1, nivel_diag: 1, faltan: 1, motivo: 1, roi_txt: 1, d1: 1, d2: 1, d3: 1, d4: 1, d5: 1, d6: 1 };
     var l = ["Solicitud desde el asistente del sitio", "Motivo: " + plantilla(v.motivo || "Consulta general", v)];
     Object.keys(v).forEach(function (k) { if (!ocultas[k] && v[k]) { l.push(k + ": " + v[k]); } });
     if (v.pts) { l.push("Autodiagnóstico Ley 21.719: " + v.nivel_diag + " (" + v.pts + " de 6)"); }
@@ -90,6 +96,7 @@
     E.nodo = id; E.miss = 0;
     if (n.accion === "diag") { diagnostico(); }
     var v = E.vars; v.estado_horario = enHorario() ? F.en_horario : F.fuera_horario.replace("{h}", F.horario_txt);
+    if (n.accion === "roi") { calculoAhorro(); }
     if (n.accion === "derivar") { derivar(); }
     var ops = (n.op || []).map(function (o) { return { t: o[0], a: o[1], s: o[2] || {} }; });
     if (n.accion === "derivar" && B.wsp) { ops.unshift({ t: "Seguir por WhatsApp", href: "https://wa.me/" + B.wsp + "?text=" + encodeURIComponent(resumenLead()) }); }
@@ -114,8 +121,9 @@
       if (/^omitir$/i.test(norm(val)) && n.omitir && !(n.pide === "tel" && !v.email)) { if (n.pide === "email" && !v.tel) { burbuja("bot", "Necesito al menos un dato de contacto: déjame tu correo o, si prefieres, tu teléfono."); E.vars.__pedirTel = 1; return mostrarNodo("der_tel"); } val = ""; }
       else if (/^omitir$/i.test(norm(val)) && n.pide === "tel" && !v.email) { return setTimeout(function () { burbuja("bot", "Necesito al menos un dato para contactarte: escribe tu teléfono con código (ej.: +56 9 1234 5678)."); }, 250); }
       else if (n.val === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { return setTimeout(function () { burbuja("bot", "Ese correo no parece válido. Escríbelo de nuevo (ej.: nombre@empresa.cl)" + (n.omitir ? " o escribe «omitir»." : ".")); }, 250); }
+      else if (n.val === "num" && !/^\s*\$?\s*(\d{1,3}(\.\d{3})+|\d+)\s*$/.test(val)) { return setTimeout(function () { burbuja("bot", "Necesito solo un número, por ejemplo: 4 o 80000."); }, 250); }
       else if (n.val === "tel" && (val.replace(/\D/g, "").length < 8 || val.replace(/\D/g, "").length > 15)) { return setTimeout(function () { burbuja("bot", "Ese teléfono no parece válido. Escríbelo con código (ej.: +56 9 1234 5678)" + (n.omitir ? " o escribe «omitir»." : ".")); }, 250); }
-      E.vars[n.pide] = val.slice(0, 200); return mostrarNodo(n.sig);
+      if (n.val === "num") { val = val.replace(/[^\d]/g, ""); } E.vars[n.pide] = val.slice(0, 200); return mostrarNodo(n.sig);
     }
     var ops = n.op || [], k = parseInt(t, 10);
     if (k >= 1 && k <= ops.length && /^\d+$/.test(t)) { return irA(ops[k - 1][1], ops[k - 1][2]); }
@@ -124,7 +132,7 @@
     if (/^no$/.test(t) && ops.length === 2 && norm(ops[1][0]) === "no") { return irA(ops[1][1], ops[1][2]); }
     if (tiene(t, F.comandos.ejecutivo)) { return irA("derivar", { motivo: E.vars.motivo || "Consulta general" }); }
     if (t.length <= 30 && tiene(t, F.comandos.fin) && !tiene(t, F.comandos.menu)) { return mostrarNodo("fin"); }
-    if (t.length <= 30 && tiene(t, F.comandos.menu)) { return mostrarNodo(F.inicio); }
+    if (t.length <= 30 && tiene(t, F.comandos.menu)) { return mostrarNodo(/^(hola|buenas|buenos dias|buenas tardes|buenas noches|hi|hello)( .*)?$/.test(t) && F.bienvenida ? F.bienvenida : F.inicio); }
     for (var j = 0; j < F.intenciones.length; j++) { if (tiene(t, F.intenciones[j].p)) { return irA(F.intenciones[j].va, F.intenciones[j].set); } }
     E.miss++; if (E.miss >= 2) { E.miss = 0; return mostrarNodo("no_entiendo"); }
     setTimeout(function () { burbuja("bot", "No te entendí del todo. Elige una de las opciones o escribe «menú» para volver al inicio."); chips(ops.map(function (o) { return { t: o[0], a: o[1], s: o[2] || {} }; })); }, 300);
@@ -136,7 +144,7 @@
     fetch(B.flujo).then(function (r) { return r.json(); }).then(function (d) {
       F = d;
       if (cargarEstado() && E.log.length) { E.log.forEach(function (m) { burbuja(m[0], m[1], true); }); var n = F.nodos[E.nodo]; if (n && n.op) { chips(n.op.map(function (o) { return { t: o[0], a: o[1], s: o[2] || {} }; })); } }
-      else { mostrarNodo(F.inicio); }
+      else { mostrarNodo(F.bienvenida || F.inicio); }
     }).catch(function () { burbuja("bot", "No pude cargar el asistente. Llámanos al (02) 2396 4723 o escribe a contacto@hsm.cl.", true); });
   }
   function abrir() { ventana.classList.add("on"); btnAbrir.style.display = "none"; iniciar(); setTimeout(function () { txt.focus(); }, 50); }

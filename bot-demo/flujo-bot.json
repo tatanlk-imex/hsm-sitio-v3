@@ -1,4 +1,5 @@
 {
+ "bienvenida": "bienvenida",
  "version": 1,
  "nombre": "Asistente HSM Chile",
  "horario_txt": "Lunes a jueves de 8:30 a 16:30 y viernes de 8:30 a 15:00",
@@ -27,8 +28,32 @@
  "vigencia_ley": "2026-12-01",
  "inicio": "inicio",
  "nodos": {
+  "bienvenida": {
+   "t": "¡Hola! Soy el asistente virtual de *HSM Chile* 👋 (marca alemana de destructoras, prensas y recicladoras; la opera Imex Estado Ltda.).\n\n*Cuéntame con tus palabras qué necesitas* (por ejemplo: «una destructora para 10 personas» o «cómo ahorro en el retiro de cartón») o elige una opción. Cuando quieras, te conecto con un ejecutivo.\n\nAl escribirme aceptas que usemos tus datos para atenderte: {SITIO}politica-de-privacidad/",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Ley 21.719",
+     "ley_intro",
+     {
+      "motivo": "Consulta Ley 21.719"
+     }
+    ],
+    [
+     "Más opciones",
+     "inicio",
+     {}
+    ]
+   ]
+  },
   "inicio": {
-   "t": "¡Hola! Soy el asistente de *HSM Chile* 👋 Vendemos destructoras de papel, prensas y recicladoras alemanas (operamos con Imex Estado Ltda.).\n\nTe oriento en pocos pasos y, cuando quieras, te conecto con un ejecutivo. ¿Qué necesitas?",
+   "t": "Estas son todas las opciones. Elige una o escríbeme con tus palabras qué necesitas 👇",
    "op": [
     [
      "Cotizar destructora",
@@ -92,10 +117,10 @@
      }
     ],
     [
-     "Reciclaje y ahorro",
-     "v_ahorro",
+     "Guía destrucción",
+     "exp_menu",
      {
-      "motivo": "Reciclaje y ahorro (prensas o ProfiPack)"
+      "motivo": "Consulta general"
      }
     ]
    ]
@@ -304,6 +329,13 @@
      "reco_profi",
      {
       "material": "cartón para embalaje"
+     }
+    ],
+    [
+     "Ahorro y venta",
+     "v_ahorro",
+     {
+      "motivo": "Reciclaje y ahorro (prensas o ProfiPack)"
      }
     ],
     [
@@ -1272,19 +1304,19 @@
    ]
   },
   "ahorro_kg": {
-   "t": "Para estimar tu ahorro necesito 2 datos. *1)* ¿Cuánto cartón o plástico generas al mes, más o menos? (ej.: «800 kg» o «3 toneladas»)",
-   "pide": "kg_mes",
-   "val": "texto",
+   "t": "Calculemos con tus números. *1)* ¿Cuántos *retiros* de cartón o residuos tienes al mes, más o menos? (un número, ej.: 4)",
+   "pide": "retiros",
+   "val": "num",
    "sig": "ahorro_costo"
   },
   "ahorro_costo": {
-   "t": "*2)* ¿Cuánto pagas hoy por retirarlo o desecharlo, y cada cuánto? (ej.: «$80.000 cada semana»; si no lo sabes, escribe «no sé»)",
-   "pide": "costo_retiro",
-   "val": "texto",
+   "t": "*2)* ¿Cuánto cuesta *cada retiro*, en pesos? (ej.: 80000)",
+   "pide": "costo_ret",
+   "val": "num",
    "sig": "ahorro_fin"
   },
   "ahorro_fin": {
-   "t": "¡Gracias! Con una generación de *{kg_mes}* y un gasto de *{costo_retiro}*, un ejecutivo te prepara una *estimación de ahorro y de recuperación de la inversión* con el equipo adecuado, incluyendo la posible venta del material compactado.\n\n¿Dejamos tus datos para enviártela?",
+   "t": "{roi_txt}\n\nEs una estimación solo con tus datos. Un ejecutivo te prepara el cálculo real con el equipo adecuado, la posible venta del material y la recuperación de la inversión.",
    "op": [
     [
      "Quiero mi estimación",
@@ -1292,10 +1324,18 @@
      {}
     ],
     [
+     "Ver prensas",
+     "prensa_mat",
+     {
+      "motivo": "Prensas o recicladora de cartón"
+     }
+    ],
+    [
      "Menú principal",
      "inicio"
     ]
-   ]
+   ],
+   "accion": "roi"
   },
   "v_obj": {
    "t": "Es normal tener dudas antes de invertir. ¿Cuál es la tuya?",
@@ -1323,6 +1363,11 @@
     [
      "¿Y si falla?",
      "obj_falla",
+     {}
+    ],
+    [
+     "Mi equipo no la usa",
+     "obj_no_usan",
      {}
     ],
     [
@@ -1470,6 +1515,319 @@
      {
       "urgencia": "solo cotizando"
      }
+    ]
+   ]
+  },
+  "v_rubro": {
+   "t": "Armemos una *propuesta inicial*. ¿En qué rubro trabajas?",
+   "op": [
+    [
+     "Salud y clínicas",
+     "v_personas",
+     {
+      "rubro": "Salud y clínicas",
+      "foco": "fichas clínicas, exámenes y recetas (datos de salud)",
+      "nivel": "P-5 o superior (HSM sugiere P-5 o más para datos de pacientes)"
+     }
+    ],
+    [
+     "Banca y finanzas",
+     "v_personas",
+     {
+      "rubro": "Banca y finanzas",
+      "foco": "contratos, comprobantes y antecedentes financieros",
+      "nivel": "P-4 o superior"
+     }
+    ],
+    [
+     "Notarías y legal",
+     "v_personas",
+     {
+      "rubro": "Notarías y legal",
+      "foco": "escrituras, poderes y documentos de clientes",
+      "nivel": "P-4 o superior"
+     }
+    ],
+    [
+     "Educación",
+     "v_personas",
+     {
+      "rubro": "Educación",
+      "foco": "datos de alumnos, apoderados y funcionarios",
+      "nivel": "P-4"
+     }
+    ],
+    [
+     "Comercio y retail",
+     "v_personas",
+     {
+      "rubro": "Comercio y retail",
+      "foco": "datos de clientes, boletas y reclamos",
+      "nivel": "P-4"
+     }
+    ],
+    [
+     "Industria y logística",
+     "v_personas",
+     {
+      "rubro": "Industria y logística",
+      "foco": "guías, órdenes de compra y datos de trabajadores",
+      "nivel": "P-3 a P-4 según el documento"
+     }
+    ],
+    [
+     "Sector público",
+     "v_personas",
+     {
+      "rubro": "Sector público",
+      "foco": "documentos de ciudadanos y funcionarios",
+      "nivel": "P-4 o superior según la clasificación de la información"
+     }
+    ],
+    [
+     "Oficinas y servicios",
+     "v_personas",
+     {
+      "rubro": "Oficinas y servicios",
+      "foco": "contratos, liquidaciones, currículums y datos de clientes",
+      "nivel": "P-4"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "v_personas": {
+   "t": "¿Cuántas personas generan documentos para destruir?",
+   "op": [
+    [
+     "Hasta 10",
+     "v_propuesta",
+     {
+      "personas": "hasta 10",
+      "linea": "OfficePro",
+      "url": "{SITIO}categoria-producto/linea-officepro/"
+     }
+    ],
+    [
+     "11 a 50",
+     "v_propuesta",
+     {
+      "personas": "11 a 50",
+      "linea": "Departamental",
+      "url": "{SITIO}categoria-producto/linea-departamental/"
+     }
+    ],
+    [
+     "51 a 200",
+     "v_propuesta",
+     {
+      "personas": "51 a 200",
+      "linea": "Departamental o Industrial",
+      "url": "{SITIO}categoria-producto/linea-departamental/"
+     }
+    ],
+    [
+     "Más de 200",
+     "v_propuesta",
+     {
+      "personas": "más de 200",
+      "linea": "Industrial Powerline",
+      "url": "{SITIO}categoria-producto/linea-industrial-powerline/"
+     }
+    ]
+   ]
+  },
+  "v_propuesta": {
+   "t": "*Propuesta inicial para {rubro}* ({personas} personas):\n1) *Equipo:* línea *{linea}* con nivel *{nivel}* para {foco}. Ver: {url}\n2) *Procedimiento:* destruir en el momento y en origen, y llevar un *registro* (fecha, responsable y tipo de documento).\n3) *Capacitación* de 5 minutos al equipo y un responsable por área.\n4) *Respaldo:* servicio técnico propio, repuestos e insumos.\n\nUn ejecutivo confirma modelo, cantidad y condiciones. Orientación general, no asesoría legal.",
+   "op": [
+    [
+     "Quiero cotizar",
+     "derivar",
+     {
+      "motivo": "Propuesta inicial: {rubro}, {personas} personas"
+     }
+    ],
+    [
+     "Agendar visita",
+     "faq_visita",
+     {}
+    ],
+    [
+     "Calcular ahorro",
+     "v_ahorro",
+     {}
+    ]
+   ]
+  },
+  "exp_menu": {
+   "t": "Te cuento lo que sé de *destrucción segura de documentos* 🔒. ¿Qué quieres saber?",
+   "op": [
+    [
+     "Por qué se filtran datos",
+     "exp_causas",
+     {}
+    ],
+    [
+     "Pasos de una eliminación",
+     "exp_pasos",
+     {}
+    ],
+    [
+     "Niveles de seguridad",
+     "exp_niveles",
+     {}
+    ],
+    [
+     "Interna o externa",
+     "obj_externo",
+     {}
+    ],
+    [
+     "Que el equipo la use",
+     "obj_no_usan",
+     {}
+    ],
+    [
+     "Evaluar mis documentos",
+     "ley_empresa",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "exp_causas": {
+   "t": "Los errores más comunes al eliminar información:\n1) *Botarla al papelero o al reciclaje*: sigue siendo legible.\n2) *Acumularla esperando un retiro*: pasa por muchas manos.\n3) *No dejar registro* de qué se destruyó, quién y cuándo.\n4) *Usar un corte demasiado grueso* para datos sensibles.\n5) *Olvidar los discos duros* y equipos en desuso.\n6) *Creer que la política basta* si no se ejecuta.",
+   "op": [
+    [
+     "Pasos a seguir",
+     "exp_pasos",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "exp_pasos": {
+   "t": "Cuatro pasos para una eliminación trazable:\n1) *Identificar* qué documentos tienen datos personales o confidenciales.\n2) *Autorizar* la eliminación cuando terminó el plazo de conservación y no hay obligación de mantenerlos.\n3) *Destruir* con un método que impida leer o reconstruir, con el nivel adecuado.\n4) *Registrar* fecha, categoría, responsable y procedimiento.",
+   "op": [
+    [
+     "Niveles de seguridad",
+     "exp_niveles",
+     {}
+    ],
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "exp_niveles": {
+   "t": "La norma *DIN 66399* (ISO/IEC 21964) agrupa los niveles en 3 clases, según HSM:\n• *Clase 1* (P-1 a P-3): datos internos.\n• *Clase 2* (P-3 a P-5): datos confidenciales.\n• *Clase 3* (P-5 a P-7): datos especialmente confidenciales.\nPara datos personales HSM recomienda *P-4 o superior*; sugiere P-5 o más para datos de pacientes y P-6 para fichas de personal. Orientación del fabricante, no asesoría legal.",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Armar propuesta",
+     "v_rubro",
+     {
+      "motivo": "Propuesta inicial de destrucción"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "obj_no_usan": {
+   "t": "Es normal: a veces el equipo no se acostumbra. Funciona mejor:\n1) *Ubicar la destructora donde se genera el papel*, no en otro piso.\n2) Una regla simple: *«papel con datos = destructora»*.\n3) Un *responsable por área* y una charla de 5 minutos.\n4) Revisar el *registro* una vez al mes.\n5) Elegir el modelo junto con quienes la usarán.",
+   "op": [
+    [
+     "Armar propuesta",
+     "v_rubro",
+     {
+      "motivo": "Propuesta inicial de destrucción"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Implementación de destrucción en la oficina"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_exige": {
+   "t": "La ley *no exige una marca ni un modelo* de destructora: exige proteger los datos, eliminarlos cuando corresponde y poder demostrarlo. Una destructora de nivel adecuado ayuda a controlar el riesgo de los documentos físicos, pero no puedo decir que «cumple la ley»: eso lo define tu equipo legal.",
+   "op": [
+    [
+     "Mis datos en papel",
+     "conciencia",
+     {}
+    ],
+    [
+     "Armar propuesta",
+     "v_rubro",
+     {
+      "motivo": "Propuesta inicial de destrucción"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "faq_catalogo": {
+   "t": "Aquí está el catálogo con fichas técnicas y videos: {SITIO}productos/",
+   "op": [
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta de catálogo"
+     }
+    ],
+    [
+     "Menú principal",
+     "inicio"
     ]
    ]
   }
@@ -1823,6 +2181,68 @@
     "de que trata"
    ],
    "va": "ley_que",
+   "set": {}
+  },
+  {
+   "p": [
+    "me obliga",
+    "es obligatorio comprar",
+    "tengo que comprar",
+    "exige una destructora",
+    "es obligatoria",
+    "obliga a comprar"
+   ],
+   "va": "faq_exige",
+   "set": {}
+  },
+  {
+   "p": [
+    "propuesta",
+    "armar propuesta",
+    "mi rubro",
+    "recomiéndame",
+    "recomiendame",
+    "qué me recomiendas",
+    "que me recomiendas"
+   ],
+   "va": "v_rubro",
+   "set": {}
+  },
+  {
+   "p": [
+    "guía de destrucción",
+    "guia de destruccion",
+    "cómo destruir",
+    "como destruir",
+    "procedimiento de destrucción",
+    "procedimiento de destruccion",
+    "buenas prácticas",
+    "buenas practicas"
+   ],
+   "va": "exp_menu",
+   "set": {}
+  },
+  {
+   "p": [
+    "no la usan",
+    "no la van a usar",
+    "no la ocupan",
+    "no se acostumbran",
+    "resistencia al cambio"
+   ],
+   "va": "obj_no_usan",
+   "set": {}
+  },
+  {
+   "p": [
+    "catálogo",
+    "catalogo",
+    "ficha técnica",
+    "ficha tecnica",
+    "fichas",
+    "videos"
+   ],
+   "va": "faq_catalogo",
    "set": {}
   },
   {
