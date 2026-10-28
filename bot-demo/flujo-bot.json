@@ -472,8 +472,28 @@
    ]
   },
   "ley_intro": {
-   "t": "La *Ley 21.719* de protección de datos personales comienza a regir plenamente en diciembre de 2026 (*{dias_txt}*). Botar un documento no elimina su información: hay que destruirlo de forma segura y dejar registro.\n\n¿Quieres hacer el autodiagnóstico de 6 preguntas? Toma 1 minuto.",
+   "t": "La *Ley 21.719* de protección de datos personales rige plenamente desde el *1 de diciembre de 2026* (*{dias_txt}*). Botar un documento no elimina su información: hay que destruirlo de forma segura y poder demostrarlo.\n\n¿Qué quieres saber?",
    "op": [
+    [
+     "Qué dice la ley",
+     "ley_que",
+     {}
+    ],
+    [
+     "Derechos de las personas",
+     "ley_derechos",
+     {}
+    ],
+    [
+     "Obligaciones y sanciones",
+     "ley_oblig",
+     {}
+    ],
+    [
+     "¿Y mis datos en papel?",
+     "conciencia",
+     {}
+    ],
     [
      "Autodiagnóstico",
      "d1",
@@ -494,6 +514,131 @@
     [
      "Hablar con ejecutivo",
      "derivar"
+    ]
+   ]
+  },
+  "ley_que": {
+   "t": "La Ley 21.719 moderniza la ley chilena de protección de la vida privada (19.628) y crea la *Agencia de Protección de Datos Personales*, que fiscalizará. Rige plenamente desde el *1 de diciembre de 2026*.\n\nAplica a quien trate datos personales de *clientes, trabajadores, pacientes o proveedores*: lo que se pide, se guarda, se usa y *se elimina*. También importa lo que está en documentos físicos.\n\nEs información general, no asesoría legal.",
+   "op": [
+    [
+     "Derechos personas",
+     "ley_derechos",
+     {}
+    ],
+    [
+     "Mis datos en papel",
+     "conciencia",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ]
+   ]
+  },
+  "ley_derechos": {
+   "t": "Las personas podrán pedir *acceso, rectificación, supresión, oposición, portabilidad y bloqueo* de sus datos. Si una organización niega una solicitud, debe fundamentarlo e informar que se puede reclamar ante la Agencia (según guías, en 30 días hábiles).\n\nEs decir: *tus clientes, trabajadores o pacientes podrán preguntarte qué haces con sus datos y pedirte que los elimines*. Hay que saber responder.",
+   "op": [
+    [
+     "Obligaciones",
+     "ley_oblig",
+     {}
+    ],
+    [
+     "Mis datos en papel",
+     "conciencia",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ]
+   ]
+  },
+  "ley_oblig": {
+   "t": "Las organizaciones deberán proteger los datos con *medidas técnicas y organizativas adecuadas*, tratar solo lo necesario, *eliminarlos cuando ya no haya fundamento para conservarlos* y poder demostrarlo.\n\nLas infracciones más graves pueden llegar hasta *20.000 UTM* según las guías; las cifras por tipo de infracción se revisan en el texto oficial. Además hay riesgo reputacional.\n\nNo es asesoría legal: consulta a tu equipo legal.",
+   "op": [
+    [
+     "Mis datos en papel",
+     "conciencia",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta Ley 21.719"
+     }
+    ]
+   ]
+  },
+  "conciencia": {
+   "t": "Una pregunta para pensar 🤔\n\nCuando entregas tus datos en una *clínica, banco, notaría, tienda o empresa*, ¿qué pasa con esos papeles cuando ya no los necesitan? ¿Quién los destruye, cómo y dónde? No siempre está claro: a veces terminan en un papelero, un contenedor o una bodega, *legibles para cualquiera*.\n\nCon la Ley 21.719, cada organización que guarda datos de terceros tendrá que poder responder eso. Y tú, como persona, podrás preguntarles.",
+   "op": [
+    [
+     "Mi empresa",
+     "ley_empresa",
+     {}
+    ],
+    [
+     "Preguntas útiles",
+     "ley_preguntas",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ]
+   ]
+  },
+  "ley_preguntas": {
+   "t": "Preguntas que puedes hacer a quien recibe tus datos en papel:\n1) ¿Cuánto tiempo guardan mis documentos?\n2) ¿Quién tiene acceso a ellos?\n3) ¿Cómo y quién los destruye cuando ya no los necesitan?\n4) ¿Dejan registro de esa destrucción?\n\nY recuerda que podrás pedir la *supresión* de tus datos cuando ya no haya razón para conservarlos.",
+   "op": [
+    [
+     "Mi empresa",
+     "ley_empresa",
+     {}
+    ],
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ],
+    [
+     "Menú principal",
+     "inicio"
+    ]
+   ]
+  },
+  "ley_empresa": {
+   "t": "Ahora tú, como organización: ¿cuánto papel con datos de *clientes, trabajadores o pacientes* se acumula en tu oficina (contratos, fichas, liquidaciones, currículums, recetas, comprobantes)?\n\nSi hoy se va al papelero, al reciclaje o espera un retiro, sigue siendo legible. Destruirlo *en el momento y en origen* con una destructora HSM de nivel adecuado (P-4 o superior para datos personales) corta el riesgo de raíz y deja evidencia.",
+   "op": [
+    [
+     "Autodiagnóstico",
+     "d1",
+     {}
+    ],
+    [
+     "Cotizar destructora",
+     "dest_vol",
+     {
+      "motivo": "Cotización de destructora de documentos"
+     }
+    ],
+    [
+     "Hablar con ejecutivo",
+     "derivar",
+     {
+      "motivo": "Consulta Ley 21.719 y destrucción interna"
+     }
     ]
    ]
   },
@@ -1613,6 +1758,71 @@
     "ya tengo servicio"
    ],
    "va": "obj_externo",
+   "set": {}
+  },
+  {
+   "p": [
+    "derechos",
+    "arco",
+    "supresión",
+    "supresion",
+    "portabilidad",
+    "bloqueo",
+    "mis derechos",
+    "titular"
+   ],
+   "va": "ley_derechos",
+   "set": {}
+  },
+  {
+   "p": [
+    "sanción",
+    "sancion",
+    "sanciones",
+    "multa",
+    "multas",
+    "agencia",
+    "fiscaliza",
+    "fiscalización",
+    "fiscalizacion",
+    "obligaciones",
+    "obligatorio"
+   ],
+   "va": "ley_oblig",
+   "set": {}
+  },
+  {
+   "p": [
+    "clínica",
+    "clinica",
+    "banco",
+    "notaría",
+    "notaria",
+    "basura",
+    "papelero",
+    "botan",
+    "botar",
+    "mis datos",
+    "qué pasa con mis datos",
+    "que pasa con mis datos",
+    "datos impresos",
+    "datos en papel"
+   ],
+   "va": "conciencia",
+   "set": {}
+  },
+  {
+   "p": [
+    "qué dice la ley",
+    "que dice la ley",
+    "desde cuándo",
+    "desde cuando",
+    "cuándo parte",
+    "cuando parte",
+    "de qué trata",
+    "de que trata"
+   ],
+   "va": "ley_que",
    "set": {}
   },
   {
